@@ -7,7 +7,7 @@ Created on Sat oct 3 18:20:31 2020
 
 # -*- coding: utf-8 -*-
 """
-Created on Fri oct 02 10:50:04 2020
+Created on sun oct 04 19:50:04 2020
 
 @author: nitin Faye
 """
@@ -70,7 +70,7 @@ def main():
     st.title("Covid Analysis")
     html_temp = """
     <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Streamlit Bank Authenticator ML App </h2>
+    <h2 style="color:white;text-align:center;">Streamlit Covid Analyser ML App </h2>
     </div>
     """
     st.markdown(html_temp,unsafe_allow_html=True)
