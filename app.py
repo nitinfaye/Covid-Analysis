@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat oct 3 18:20:31 2020
+
+@author: Nitin Faye
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Fri oct 02 10:50:04 2020
+
+@author: nitin Faye
+"""
+
+
+import numpy as np
+import pickle
+import pandas as pd
+#from flasgger import Swagger
+import streamlit as st 
+
+from PIL import Image
+
+#app=Flask(__name__)
+#Swagger(app)
+
+pickle_in = open("model_scores.pkl","rb")
+classifier=pickle.load(pickle_in)
+
+#@app.route('/')
+def welcome():
+    return "Welcome All"
+
+#@app.route('/predict',methods=["Get"])
+def predict_covid_cases(Confirmed,Deaths,Recovred):
+    
+    """Let's Authenticate the Banks Note 
+    This is using docstrings for specifications.
+    ---
+    parameters:  
+      - name: variance
+        in: query
+        type: number
+        required: true
+      - name: skewness
+        in: query
+        type: number
+        required: true
+      - name: curtosis
+        in: query
+        type: number
+        required: true
+      - name: entropy
+        in: query
+        type: number
+        required: true
+    responses:
+        200:
+            description: The output values
+        
+    """
+   
+    prediction=classifier.predict([[Confirmed,Deaths,Recovred]])
+    print(prediction)
+    return prediction
+
+
+
+def main():
+    st.title("Covid Analysis")
+    html_temp = """
+    <div style="background-color:tomato;padding:10px">
+    <h2 style="color:white;text-align:center;">Streamlit Bank Authenticator ML App </h2>
+    </div>
+    """
+    st.markdown(html_temp,unsafe_allow_html=True)
+    Confirmed = st.text_input("Confirmed","Type Here")
+    Deaths = st.text_input("Deaths","Type Here")
+    Recovred = st.text_input("Recovred","Type Here")
+    result=""
+    if st.button("Predict"):
+        result=predict_covid_cases(Confirmed,Deaths,Recovred)
+    st.success('The output is {}'.format(result))
+    if st.button("About"):
+        st.text("Lets LEarn")
+        st.text("Built with Streamlit")
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0',port=8000)
+    #main()
+    
+    
+    
