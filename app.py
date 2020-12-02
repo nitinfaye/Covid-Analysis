@@ -162,7 +162,7 @@ def main():
     # genrate model
     # Customizable Plot
 
-	st.subheader("Customizable Plot")
+	st.subheader("Model selection")
 	all_columns_names = df_data.columns.tolist()
 	type_of_model = st.selectbox("Select Type of model",["LINEAR REGRASSION","RANDOM FOREST","XGBoost","LSTM"])
 	#selected_columns_names = st.multiselect("Select Columns To Plot",all_columns_names)
