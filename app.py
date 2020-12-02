@@ -39,21 +39,14 @@ def main():
 	"""
 	st.markdown(html_temp,unsafe_allow_html=True)
 
-	def file_selector(folder_path='./dataset'):
-		filenames = os.listdir(folder_path)
-		selected_filename = st.selectbox("Select A file",filenames)
-		return os.path.join(folder_path,selected_filename)
-
-	filename = file_selector()
-	st.info("You Selected {}".format(filename))
+	
 
 	# Read Data
-	df = pd.read_csv(filename,parse_dates=False)
+	df = pd.read_csv('covid_19_clean_complete.csv',parse_dates=False)
 	df.rename(columns={'ObservationDate':'Date', 'Country/Region':'Country'}, inplace=True)
 	df_data = df.groupby(["Date", "Country", "Province/State"])[['Date', 'Province/State', 'Country', 'Confirmed', 'Deaths', 'Recovered']].sum().reset_index()
 	df1=df.groupby('Date').sum()
-    #confirmed.index=pd.to_datetime(confirmed.index)
-    #Total_confirmed=confirmed.sum()
+    
 	max_case_count=pd.DataFrame(df1.groupby("Date")[['Confirmed', 'Deaths', 'Recovered']].sum().reset_index())
 	
 	# Show Dataset
