@@ -5,7 +5,6 @@ import pickle
 import pandas as pd 
 import matplotlib.pyplot as plt
 # Viz Pkgs 
-matplotlib.use('Agg')
 import seaborn as sns 
 
 model= pickle.load(open('model_scores.p','rb'))
