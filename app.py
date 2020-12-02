@@ -4,14 +4,7 @@ import pickle
 # EDA Pkgs
 import pandas as pd 
 import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly
-import plotly.express as px
-import streamlit.components.v1 as components
-import plotly.graph_objects as go
-# Viz Pkgs
-import matplotlib.pyplot as plt 
-import matplotlib
+# Viz Pkgs 
 matplotlib.use('Agg')
 import seaborn as sns 
 
